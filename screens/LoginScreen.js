@@ -18,9 +18,7 @@ export default function LoginScreen({ navigation }) {
       const data = await response.json();
 
       if (response.ok) {
-        // Armazenar token JWT
         console.log('Token JWT:', data.token);
-        // Navegar para a tela de gráficos
         navigation.navigate('GraphScreen', { token: data.token });
       } else {
         setErrorMessage(data.message || 'Erro no login');

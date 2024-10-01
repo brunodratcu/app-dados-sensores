@@ -18,7 +18,7 @@ export default function GraphScreen({ route }) {
           },
         });
         const data = await response.json();
-        const filteredData = filterSensorData(data); // Aplicar filtro
+        const filteredData = filterSensorData(data); 
         setSensorData(filteredData);
       } catch (error) {
         console.error('Erro ao buscar dados dos sensores:', error);
@@ -40,8 +40,7 @@ export default function GraphScreen({ route }) {
         case 'lastWeek':
           return itemDate >= new Date(now - 7 * 24 * 60 * 60 * 1000);
         case 'last30Days':
-          return itemDate >= new Date(now - 30 * 24 * 60 * 60 * 1000); // Últimos 30 dias
-        default:
+          return itemDate >= new Date(now - 30 * 24 * 60 * 60 * 1000); 
           return true; // Caso padrão (sem filtro)
       }
     });
@@ -51,7 +50,7 @@ export default function GraphScreen({ route }) {
     labels: sensorData.map(item => new Date(item.timestamp).toLocaleTimeString()),
     datasets: [
       {
-        label: 'Temperatura',
+        label: 'Vibração',
         data: sensorData.map(item => item.temperatura),
         borderColor: 'rgba(75, 192, 192, 1)',
         fill: false,
@@ -72,7 +71,7 @@ export default function GraphScreen({ route }) {
       y: {
         title: {
           display: true,
-          text: 'Temperatura (°C)',
+          text: 'Vibração',
         },
         beginAtZero: true,
       },
@@ -92,7 +91,7 @@ export default function GraphScreen({ route }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Gráfico de Dados dos Sensores</Text>
+      <Text style={styles.title}>Dados Sensorial</Text>
       <Picker
         selectedValue={timeRange}
         style={styles.picker}
